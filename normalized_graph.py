@@ -1,6 +1,6 @@
 import traceback
 
-from graph_db import insert_record, create_relationship
+from graph_db import insert_record, create_relationship, driver
 import pandas as pd
 from logger import init_logger
 from graph_db import get_all_records
@@ -8,12 +8,6 @@ from neo4j import GraphDatabase
 
 logger = init_logger()
 
-AURA_CONNECTION_URI = "neo4j+s://0246395a.databases.neo4j.io"
-AURA_USERName = "neo4j"
-AURA_PASSWORD = "EA7mn5PARjI5Ey5mEryqMvEq4iEPuMoWrDM6MqhxEP0"
-driver = GraphDatabase.driver(
-    AURA_CONNECTION_URI,
-    auth=(AURA_USERName, AURA_PASSWORD))
 
 with driver.session(database="neo4j") as session:
     session.execute_write(
