@@ -1,0 +1,22 @@
+MATCH (n:Company)
+WITH n.name AS name, COUNT(n) AS count
+WHERE count > 1
+RETURN name, count
+
+
+CREATE (analogdevices:Company {name: 'Analog Devices', partnerbaseScore:88 ,partners:"47 Partners"})
+CREATE (test:Company {name: 'test', partnerbaseScore:-1 ,partners:"00 Partners"})
+
+MATCH (c:Company) RETURN c
+
+MATCH (c:Company)-[r]->(related)
+RETURN c, r, related
+
+MATCH (a:Company {name: 'test1'}), (b:Company {name: 'test2'})
+Merge (a)-[:PARTNER]->(b)
+
+"""
+analog devices direct partners
+MATCH (analog:Company {name: 'Analog Devices'})-[r]->(c:Company)
+RETURN analog, r, c
+"""
