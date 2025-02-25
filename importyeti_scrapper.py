@@ -41,7 +41,7 @@ class ImportyetiScrapper:
         driver.get(os.getenv("importyeti_url"))
         try:
             driver.execute_script("arguments[0].click();",
-                                  web_wait_for_element(driver, By.XPATH, '//button[text()="Sign up"]'))
+                                  web_wait_for_element(driver, By.XPATH, '//button[text()="Sign up free"]'))
         except:
             driver.execute_script("arguments[0].click();",
                                   web_wait_for_element(driver, By.XPATH, '//button[text()="Login"]'))
